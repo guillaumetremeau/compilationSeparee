@@ -39,7 +39,7 @@ typedef struct gdata_s {
 
 #define HISTOSIZE 21
 
-#define DEBUG
+/* #define DEBUG */
 
 #ifdef DEBUG
     #define LOG(A) printf A
