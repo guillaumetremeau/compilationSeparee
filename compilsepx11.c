@@ -39,7 +39,7 @@ typedef struct gdata_s {
 
 #define HISTOSIZE 21
 
-/* #define DEBUG */
+#define DEBUG
 
 #ifdef DEBUG
     #define LOG(A) printf A
@@ -117,6 +117,7 @@ void displayByValue(list_t list) {
 }
 
 void freeList(list_t *plist) {
+		
     plist-> key = plist-> value = NULL;
 }
 
@@ -156,7 +157,7 @@ float meanHisto(histogram_t h) {
     int   tot = 0, i;
     
     for (i=0; i< HISTOSIZE; ++i) {
-        som  = h[i] * i;
+        som += h[i] * i;
         tot += h[i];
     }
     LOG(("MEAN %f / %d\n", som, tot));
@@ -267,6 +268,8 @@ int main(int argc, char ** argv) {
     histogram_t h;
     int text = 1;
     char * file = NULL;
+
+    initList(&list);
 
     if (argc<2) {
         printf("[HELP] %s file mode\n", argv[0]);
